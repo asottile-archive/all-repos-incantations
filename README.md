@@ -6,21 +6,6 @@ for doing mass rewrites.
 
 [all-repos]: https://github.com/asottile/all-repos
 
-
-### format
-
-```markdown
-### title (YYYY-mm-DD)
-
-```bash
-all-repos-...
-```
-
-Description of command.
-
-Additional links and/or references.
-```
-
 ### normalize pre-commit config git urls (2018-03-07)
 
 ```bash
