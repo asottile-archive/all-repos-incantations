@@ -12,7 +12,7 @@ for doing mass rewrites.
 all-repos-grep '@.*\.route('
 ```
 
-I was looking for `@app.route('/<path:path>')`
+I was looking for `@app.route('/<path:path_var>')`
 
 ### normalize pre-commit config git urls (2018-03-07)
 
