@@ -6,6 +6,33 @@ for doing mass rewrites.
 
 [all-repos]: https://github.com/asottile/all-repos
 
+### replace legacy `wheel` metadata with `bdist_wheel` (2018-04-30)
+
+```bash
+all-repos-sed \
+    's/\[wheel\]/[bdist_wheel]/g' setup.cfg \
+    --commit-msg 'Replace legacy wheel metadata'
+```
+
+This applies the following diff:
+
+```diff
+--- a/setup.cfg
++++ b/setup.cfg
+@@ -1,2 +1,2 @@
+-[wheel]
++[bdist_wheel]
+ universal = True
+```
+
+The `[wheel]` format is considered [legacy][legacy-wheel].
+
+Here is a [sample-pr][sample-pr-wheel].
+
+
+[legacy-wheel]: https://bitbucket.org/pypa/wheel/src/54ddbcc9cec25e1f4d111a142b8bfaa163130a61/wheel/bdist_wheel.py?fileviewer=file-view-default#bdist_wheel.py-119:125
+[sample-pr-wheel]: https://github.com/asottile/pyupgrade/pull/30
+
 ### find all flask routes (2018-04-22)
 
 ```bash
