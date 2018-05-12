@@ -10,8 +10,8 @@ for doing mass rewrites.
 
 ```bash
 all-repos-grep --repos -- show-missing -- tox.ini |
-    xargs --replace grep -l show_missing {}/.coveragerc | 
-    cut -d'/' -f1-3 | 
+    xargs --replace grep -l show_missing {}/.coveragerc |
+    cut -d'/' -f1-3 |
     xargs all-repos-sed 's/ --show-missing//g' tox.ini \
         --commit-msg 'Remove --show-missing when it is set in .coveragerc' \
         --branch-name show-missing \
@@ -21,6 +21,11 @@ all-repos-grep --repos -- show-missing -- tox.ini |
 When the `[report]` section of `.coveragerc` already contains
 `show_missing = True`, it is redundant to call
 `coverage report --show-missing`.
+
+
+Here is a [sample pr][sample-pr-show-missing].
+
+[sample-pr-show-missing]: https://github.com/asottile/add-trailing-comma/pull/46
 
 ### replace legacy `wheel` metadata with `bdist_wheel` (2018-04-30)
 
@@ -43,7 +48,7 @@ This applies the following diff:
 
 The `[wheel]` format is considered [legacy][legacy-wheel].
 
-Here is a [sample-pr][sample-pr-wheel].
+Here is a [sample pr][sample-pr-wheel].
 
 
 [legacy-wheel]: https://bitbucket.org/pypa/wheel/src/54ddbcc9cec25e1f4d111a142b8bfaa163130a61/wheel/bdist_wheel.py?fileviewer=file-view-default#bdist_wheel.py-119:125
@@ -79,4 +84,4 @@ Normalization away from ssh urls is done for a few reasons:
 - `ssh` credentials are not available on travis-ci.
 - `SSH_AUTH_SOCK` is not passed through when running `tox`.
 
-Here is a [sample PR](https://github.com/pre-commit/pre-commit/pull/721).
+Here is a [sample pr](https://github.com/pre-commit/pre-commit/pull/721).
