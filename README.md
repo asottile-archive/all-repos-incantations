@@ -6,6 +6,22 @@ for doing mass rewrites.
 
 [all-repos]: https://github.com/asottile/all-repos
 
+### remove redundant `--show-missing` in `tox.ini` (2018-05-12)
+
+```bash
+all-repos-grep --repos -- show-missing -- tox.ini |
+    xargs --replace grep -l show_missing {}/.coveragerc | 
+    cut -d'/' -f1-3 | 
+    xargs all-repos-sed 's/ --show-missing//g' tox.ini \
+        --commit-msg 'Remove --show-missing when it is set in .coveragerc' \
+        --branch-name show-missing \
+        --repos
+```
+
+When the `[report]` section of `.coveragerc` already contains
+`show_missing = True`, it is redundant to call
+`coverage report --show-missing`.
+
 ### replace legacy `wheel` metadata with `bdist_wheel` (2018-04-30)
 
 ```bash
