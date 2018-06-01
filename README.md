@@ -6,6 +6,28 @@ for doing mass rewrites.
 
 [all-repos]: https://github.com/asottile/all-repos
 
+### remove mentions of autopep8 E309 code (2018-06-01)
+
+```bash
+all-repos-sed 's/E309,//g' tox.ini \
+    --commit-msg 'E309 is no longer rewritten by autopep8'
+```
+
+This applies the following diff
+
+```diff
+--- a/tox.ini
++++ b/tox.ini
+@@ -21,4 +21,4 @@ commands =
+ max-line-length=131
+ 
+ [pep8]
+-ignore=E265,E309,E501
++ignore=E265,E501
+```
+
+E309 was removed [here](https://github.com/hhatto/autopep8/pull/294).
+
 ### remove redundant `--show-missing` in `tox.ini` (2018-05-12)
 
 ```bash
