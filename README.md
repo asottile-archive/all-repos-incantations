@@ -6,6 +6,32 @@ for doing mass rewrites.
 
 [all-repos]: https://github.com/asottile/all-repos
 
+### `sha:` to `rev:` in pre-commit mirrors (2018-06-21)
+
+```bash
+all-repos-sed 's|sha:|rev:|g;s|sha you want|sha / tag you want|g' README.md \
+    --commit-msg 'Replace sha: with rev: in documentation'
+```
+
+This applies the following diff
+
+```diff
+--- a/README.md
++++ b/README.md
+@@ -12,6 +12,6 @@ For scss-lint: see https://github.com/causes/scss-lint
+ Add this to your `.pre-commit-config.yaml`:
+
+     -   repo: https://github.com/pre-commit/mirrors-scss-lint
+-        sha: ''  # Use the sha you want to point at
++        rev: ''  # Use the sha / tag you want to point at
+         hooks:
+         -   id: scss-lint
+```
+
+[`sha` is soft deprecated for `rev`][pre-commit-repo-yaml]
+
+[pre-commit-repo-yaml]: https://pre-commit.com/#pre-commit-configyaml---repos
+
 ### remove mentions of autopep8 E309 code (2018-06-01)
 
 ```bash
@@ -20,7 +46,7 @@ This applies the following diff
 +++ b/tox.ini
 @@ -21,4 +21,4 @@ commands =
  max-line-length=131
- 
+
  [pep8]
 -ignore=E265,E309,E501
 +ignore=E265,E501
