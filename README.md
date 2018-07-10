@@ -6,6 +6,37 @@ for doing mass rewrites.
 
 [all-repos]: https://github.com/asottile/all-repos
 
+### appveyor python3.6 -> python3.7 (2018-07-10)
+
+```bash
+all-repos-sed 's/36/37/g' appveyor.yml \
+    --commit-msg 'Use python3.7 in appveyor'
+```
+
+This applies the following diff
+
+```diff
+diff --git a/appveyor.yml b/appveyor.yml
+index 8df64a5..395320b 100644
+--- a/appveyor.yml
++++ b/appveyor.yml
+@@ -1,10 +1,10 @@
+ environment:
+     matrix:
+         - TOXENV: py27
+-        - TOXENV: py36
++        - TOXENV: py37
+
+ install:
+-    - "SET PATH=C:\\Python36;C:\\Python36\\Scripts;%PATH%"
++    - "SET PATH=C:\\Python37;C:\\Python37\\Scripts;%PATH%"
+     - pip install tox
+
+ # Not a C# project
+```
+
+[appveyor/ci#2475](https://github.com/appveyor/ci/issues/2475)
+
 ### `sha:` to `rev:` in pre-commit mirrors (2018-06-21)
 
 ```bash
