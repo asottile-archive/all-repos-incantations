@@ -6,6 +6,30 @@ for doing mass rewrites.
 
 [all-repos]: https://github.com/asottile/all-repos
 
+### travis: remove `sudo:`
+
+https://blog.travis-ci.com/2018-11-19-required-linux-infrastructure-migration
+
+```bash
+all-repos-sed '/sudo:/d' .travis.yml \
+    --commit-msg "$(echo -e 'remove sudo: in .travis.yml\n\nhttps://blog.travis-ci.com/2018-11-19-required-linux-infrastructure-migration')"
+```
+
+This applies the following diff
+
+```diff
+diff --git a/.travis.yml b/.travis.yml
+index c42db4e..b5b10e5 100644
+--- a/.travis.yml
++++ b/.travis.yml
+@@ -1,5 +1,4 @@
+ language: python
+-sudo: false
+ matrix:
+     include:  # These should match the tox env list
+     -   env: TOXENV=py27
+```
+
 ### appveyor python3.6 -> python3.7 (2018-07-10)
 
 ```bash
