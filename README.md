@@ -6,6 +6,30 @@ for doing mass rewrites.
 
 [all-repos]: https://github.com/asottile/all-repos
 
+### travis: remove `dist: trusty`
+
+https://blog.travis-ci.com/2017-07-11-trusty-as-default-linux-is-coming
+
+```bash
+all-repos-sed '/^dist: trusty/d' .travis.yml \
+    --commit-msg 'Remove noop `dist: trusty` from travis.yml'
+```
+
+This applies the following diff:
+
+```diff
+diff --git a/.travis.yml b/.travis.yml
+index 1365a38..960612f 100644
+--- a/.travis.yml
++++ b/.travis.yml
+@@ -1,5 +1,4 @@
+ language: python
+-dist: trusty
+ matrix:
+   include:
+     - python: pypy2.7-5.10.0
+```
+
 ### travis: remove `sudo:`
 
 https://blog.travis-ci.com/2018-11-19-required-linux-infrastructure-migration
