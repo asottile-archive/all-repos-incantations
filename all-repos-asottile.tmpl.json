@@ -1,0 +1,15 @@
+{
+    "output_dir": "repos",
+    "exclude": "^(asottile-archive/|asottile/ancient-pythons|bukzor/|deadsnakes/python|lyft/|pre-commit/mirrors|struys/|tox-dev/(?!tox(-pip-extensions)?$)|pytest-dev/(?!pytest$))",
+    "source": "all_repos.source.github",
+    "source_settings": {
+        "api_key": "$KEY",
+        "username": "asottile",
+        "collaborator": true
+    },
+    "push": "all_repos.push.github_pull_request",
+    "push_settings": {
+        "api_key": "$KEY",
+        "username": "asottile"
+    }
+}
