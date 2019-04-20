@@ -6,6 +6,30 @@ for doing mass rewrites.
 
 [all-repos]: https://github.com/asottile/all-repos
 
+### travis: remove default `python: 3.6`
+
+https://changelog.travis-ci.com/the-default-python-version-for-your-builds-is-now-3-6-97935
+
+```bash
+all-repos-sed \
+    --commit-msg 'python3.6 is the default in travis now' \
+    --branch-name travis-python36 \
+    '/^python: 3.6$/d' .travis.yml
+```
+
+This applies the following diff:
+
+```diff
+--- a/.travis.yml
++++ b/.travis.yml
+@@ -1,5 +1,4 @@
+ language: python
+-python: 3.6
+ install: pip install pre-commit
+ script: pre-commit run --all-files
+ cache:
+```
+
 ### travis: remove `dist: trusty`
 
 https://blog.travis-ci.com/2017-07-11-trusty-as-default-linux-is-coming
