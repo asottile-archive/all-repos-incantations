@@ -1,3 +1,5 @@
+[![pre-commit.ci status](https://results.pre-commit.ci/badge/github/asottile/all-repos-incantations/master.svg)](https://results.pre-commit.ci/latest/github/asottile/all-repos-incantations/master)
+
 all-repos-incantations
 ======================
 
